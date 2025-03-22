@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "diplom.sso.v1;ssov1";
+
+service Auth{
+    rpc Register (RegisterRequest) returns (RegisterResponce);
+    rpc Login (LoginRequest) returns (LoginResponce);
+    rpc isAdmin (isAdminRequest) returns (isAdminResponce);
+}
+
+message RegisterRequest{
+    string login = 1;
+    string password = 2;
+}
+message RegisterResponce{
+    int64 user_id = 1;
+}
+
+message LoginRequest{
+    string login = 1;
+    string password = 2;
+    int32 app_id = 3;
+}
+message LoginResponce{
+    string token = 1;
+}
+
+message isAdminRequest{
+    string user_id = 1;
+    string password = 2;
+}
+message isAdminResponce{
+    bool isAdmin = 1;
+}
