@@ -8,6 +8,7 @@ service Auth{
     rpc Register (RegisterRequest) returns (RegisterResponce);
     rpc Login (LoginRequest) returns (LoginResponce);
     rpc isAdmin (isAdminRequest) returns (isAdminResponce);
+    rpc isLibrarian (isLibrarianRequest) returns (isLibrarianResponce);
 }
 
 message RegisterRequest{
@@ -29,8 +30,14 @@ message LoginResponce{
 
 message isAdminRequest{
     int64 user_id = 1;
-    string password = 2;
 }
 message isAdminResponce{
     bool isAdmin = 1;
+}
+
+message isLibrarianRequest{
+    int64 user_id = 1;
+}
+message isLibrarianResponce{
+    bool isLibrarian = 1;
 }
